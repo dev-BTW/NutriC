@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | NutriC</title>
+    <link rel="stylesheet" href="about.css"> 
+</head>
+<body class="light-mode"> 
+
+    <div class="button-container">
+        <!-- Language Selection Dropdown -->
+        <select id="language-select" class="toggle-button-lang">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="hi">हिन्दी</option>
+        </select>
+    
+        <!-- Toggle button for Theme and Text-to-Speech -->
+        <button id="toggle-mode" class="toggle-button">🌞/🌜</button>
+        <button id="text-to-speech" class="toggle-button">🔊 Read Text</button>
+    </div>
+
+    <div class="container">
+        <!-- Vertical Navbar -->
+        <nav class="navbar">
+            <h2 id="site-title">NutriC</h2>
+            <ul>
+                <li><a href="dashboard.html" id="dashboard-link"  accesskey="b" tabindex="1">Dashboard</a></li>
+                <li><a href="about.html" id="about-link"  accesskey="a" tabindex="2">About</a></li>
+                <li><a href="contact.html" id="contact-link" accesskey="c" tabindex="3">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 id="hero-title">About NutriC</h1>
+                    <p id="hero-description">Your journey to a healthier life begins here. Discover nutrition and wellness insights to help you thrive.</p>
+                </div>
+            </section>
+            <!-- Values Section -->
+            <section class="values-section fade-in">
+                <h2 id="values-title">Our Core Values</h2>
+                <div class="values-cards">
+                    <div class="card">
+                        <img src="img/c4.png" alt="Integrity">
+                        <h3 id="integrity-title">Integrity</h3>
+                        <p id="integrity-desc">We uphold the highest standards in all we do, ensuring that our information is accurate, trustworthy, and evidence-based.</p>
+                    </div>
+                    <div class="card">
+                        <img src="img/c3.jpg" alt="Innovation">
+                        <h3 id="innovation-title">Innovation</h3>
+                        <p id="innovation-desc">We strive to bring fresh, innovative approaches to nutritional education and wellness.</p>
+                    </div>
+                    <div class="card">
+                        <img src="img/c5.jpg" alt="Compassion">
+                        <h3 id="compassion-title">Compassion</h3>
+                        <p id="compassion-desc">We care deeply about our community and are dedicated to helping everyone lead healthier lives.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Section -->
+            <section class="story-section fade-in">
+                <h2 id="story-title">Our Story</h2>
+                <p id="story-content">NutriC was founded with a single vision: to make nutrition education accessible to everyone. Our journey began as a small initiative, driven by a deep commitment to empower individuals to make healthier choices...</p>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="cta-section fade-in">
+                <h2 id="cta-title">Join Our Community</h2>
+                <p id="cta-content">Are you ready to take the first step towards a healthier life? Join our community for exclusive tips, resources, and updates.</p>
+                <button id="subscribe-button">Subscribe Now</button>
+            </section>
+
+            <button class="scroll-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+                ↑
+            </button>
+        </div>
+
+        <!-- Subscription Modal -->
+        <div id="subscription-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <p>Thank you for subscribing to NutriC!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                "site-title": "NutriC",
+                "dashboard-link": "Dashboard",
+                "about-link": "About",
+                "contact-link": "Contact",
+                "hero-title": "About NutriC",
+                "hero-description": "Your journey to a healthier life begins here. Discover nutrition and wellness insights to help you thrive.",
+                "values-title": "Our Core Values",
+                "integrity-title": "Integrity",
+                "integrity-desc": "We uphold the highest standards in all we do, ensuring that our information is accurate, trustworthy, and evidence-based.",
+                "innovation-title": "Innovation",
+                "innovation-desc": "We strive to bring fresh, innovative approaches to nutritional education and wellness.",
+                "compassion-title": "Compassion",
+                "compassion-desc": "We care deeply about our community and are dedicated to helping everyone lead healthier lives.",
+                "story-title": "Our Story",
+                "story-content": "NutriC was founded with a single vision: to make nutrition education accessible to everyone. Our journey began as a small initiative, driven by a deep commitment to empower individuals to make healthier choices...",
+                "cta-title": "Join Our Community",
+                "cta-content": "Are you ready to take the first step towards a healthier life? Join our community for exclusive tips, resources, and updates."
+            }
+            ,
+            fr: {
+                "site-title": "NutriC",
+                "dashboard-link": "Tableau de bord",
+                "about-link": "À propos",
+                "services-link": "Services",
+                "contact-link": "Contact",
+                "blog-link": "Blog",
+                "hero-title": "À propos de NutriC",
+                "hero-description": "Votre parcours vers une vie plus saine commence ici. Découvrez des informations sur la nutrition et le bien-être pour vous aider à prospérer.",
+                "values-title": "Nos valeurs fondamentales",
+                "integrity-title": "Intégrité",
+                "integrity-desc": "Nous maintenons les normes les plus élevées dans tout ce que nous faisons, en veillant à ce que nos informations soient exactes, fiables et fondées sur des preuves.",
+                "innovation-title": "Innovation",
+                "innovation-desc": "Nous nous efforçons d'apporter des approches innovantes à l'éducation nutritionnelle et au bien-être.",
+                "compassion-title": "Compassion",
+                "compassion-desc": "Nous nous soucions profondément de notre communauté et sommes dévoués à aider chacun à mener une vie plus saine.",
+                "story-title": "Notre Histoire",
+                "story-content": "NutriC a été fondée avec une vision unique : rendre l'éducation nutritionnelle accessible à tous...",
+                "faq-title": "Questions Fréquemment Posées",
+                "faq1-question": "Qu'est-ce que NutriC ?",
+                "faq1-answer": "NutriC est une plateforme axée sur la fourniture d'informations nutritionnelles...",
+                "faq2-question": "Comment puis-je rejoindre NutriC ?",
+                "faq2-answer": "Vous pouvez rejoindre notre communauté en vous abonnant sur notre site web...",
+                "cta-title": "Rejoignez notre communauté",
+                "cta-content": "Êtes-vous prêt à faire le premier pas vers une vie plus saine ? Rejoignez notre communauté pour des conseils, des ressources et des mises à jour exclusives."
+            },
+            hi: {
+                "site-title": "NutriC",
+                "dashboard-link": "डैशबोर्ड",
+                "about-link": "के बारे में",
+                "services-link": "सेवाएं",
+                "contact-link": "संपर्क",
+                "blog-link": "ब्लॉग",
+                "hero-title": "NutriC के बारे में",
+                "hero-description": "आपका स्वस्थ जीवन की ओर यात्रा यहाँ से शुरू होती है। पोषण और स्वास्थ्य के बारे में जानकारी प्राप्त करें जो आपकी मदद करेगी।",
+                "values-title": "हमारे मूल मूल्य",
+                "integrity-title": "ईमानदारी",
+                "integrity-desc": "हम जो कुछ भी करते हैं उसमें उच्चतम मानकों को बनाए रखते हैं, यह सुनिश्चित करते हुए कि हमारी जानकारी सटीक, विश्वसनीय और साक्ष्य-आधारित है।",
+                "innovation-title": "नवाचार",
+                "innovation-desc": "हम पोषण शिक्षा और कल्याण के लिए नए, नवोन्मेषी दृष्टिकोण लाने का प्रयास करते हैं।",
+                "compassion-title": "दयालुता",
+                "compassion-desc": "हम अपने समुदाय के प्रति गहरी चिंता करते हैं और सभी को स्वस्थ जीवन जीने में मदद करने के लिए समर्पित हैं।",
+                "story-title": "हमारी कहानी",
+                "story-content": "NutriC एकल दृष्टि के साथ स्थापित किया गया था: पोषण शिक्षा को सभी के लिए सुलभ बनाना। हमारी यात्रा एक छोटे से पहल के रूप में शुरू हुई...",
+                "faq-title": "अक्सर पूछे जाने वाले प्रश्न",
+                "faq1-question": "NutriC क्या है?",
+                "faq1-answer": "NutriC एक प्लेटफ़ॉर्म है जो पोषण संबंधी जानकारी प्रदान करने पर केंद्रित है...",
+                "faq2-question": "मैं NutriC में कैसे शामिल हो सकता हूँ?",
+                "faq2-answer": "आप हमारे वेबसाइट पर सब्सक्राइब करके हमारी समुदाय में शामिल हो सकते हैं...",
+                "cta-title": "हमारी समुदाय में शामिल हों",
+                "cta-content": "क्या आप स्वस्थ जीवन की ओर पहला कदम उठाने के लिए तैयार हैं? विशेष सुझावों, संसाधनों और अपडेट के लिए हमारी समुदाय से जुड़ें।"
+            }
+        };
+           
+        
+
+        // Language change event
+        document.getElementById('language-select').addEventListener('change', function() {
+            const selectedLanguage = this.value;
+            translatePage(selectedLanguage);
+        });
+
+        // Translate function
+        function translatePage(lang) {
+            Object.keys(translations[lang]).forEach(function(key) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+        }
+
+        // Theme toggle functionality
+        document.getElementById('toggle-mode').addEventListener('click', function() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            body.classList.toggle('dark-mode');
+            this.textContent = body.classList.contains('light-mode') ? '🌞' : '🌜';
+        });
+
+        // Text-to-Speech functionality
+        document.getElementById('text-to-speech').addEventListener('click', function() {
+            const text = document.querySelector('.main-content').innerText;
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'en'; 
+            window.speechSynthesis.speak(speech);
+        });
+
+        // Modal display functions
+        const modal = document.getElementById("subscription-modal");
+
+        document.getElementById("subscribe-button").addEventListener("click", function() {
+            modal.style.display = "block";
+        });
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

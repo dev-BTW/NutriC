@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriC</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <h2>Nutri C</h2>
+            <ul>
+                <li><a href="dashboard.html" tabindex="1" accesskey="d" title="Press Alt + D">Dashboard</a></li>
+                <li><a href="about.html" tabindex="2" accesskey="a" title="Press Alt + A">About</a></li>
+                <li><a href="contact.html" tabindex="4"accesskey="c" title="Press Alt + C">Contact</a></li>
+            </ul>
+            <button id="toggleSpeech" tabindex="6" accesskey="t" title="Press Alt + T to toggle text-to-speech">Text to Speech</button>
+            <button id="toggleDarkMode" tabindex="7" accesskey="l" title="Press Alt + L to toggle dark mode">Toggle Dark Mode</button>
+        </nav>
+        <main class="content">
+            <h1 tabindex="8">Welcome to Nutri C</h1>
+            <p tabindex="9">Your source for nutritional advice and healthy living tips.</p>
+            
+            <section class="nutrition-types" tabindex="10">
+                <h2>Types of Nutrition</h2>
+                <div class="nutrition-list">
+                    <div class="nutrition-item" tabindex="11">
+                        <img src="img/carbs.jpg" alt="Carbohydrates">
+                        <h3>Carbohydrates</h3>
+                        <p>Essential for energy. Found in grains, fruits, and vegetables.</p>
+                    </div>
+                    <div class="nutrition-item" tabindex="12">
+                        <img src="img/proteins.jpg" alt="Proteins">
+                        <h3>Proteins</h3>
+                        <p>Important for building and repairing tissues. Sources include meat, beans, and dairy.</p>
+                    </div>
+                    <div class="nutrition-item" tabindex="13">
+                        <img src="img/fats.jpg" alt="Fats">
+                        <h3>Fats</h3>
+                        <p>Necessary for hormone production and nutrient absorption. Found in oils, nuts, and avocados.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="importance" tabindex="14">
+                <h2>Why Nutrition is Necessary</h2>
+                <p>Proper nutrition is vital for overall health. It helps:</p>
+                <div class="importance-list">
+                    <div class="importance-item" tabindex="15">
+                        <h3>Boost the Immune System</h3>
+                        <p>A well-balanced diet strengthens your body's defenses against illness.</p>
+                    </div>
+                    <div class="importance-item" tabindex="16">
+                        <h3>Maintain a Healthy Weight</h3>
+                        <p>Good nutrition helps regulate your body weight and reduces obesity risk.</p>
+                    </div>
+                    <div class="importance-item" tabindex="17">
+                        <h3>Support Brain Function</h3>
+                        <p>Nutrients are essential for cognitive function and mental health.</p>
+                    </div>
+                    <div class="importance-item" tabindex="18">
+                        <h3>Improve Energy Levels</h3>
+                        <p>Proper nutrition fuels your body, enhancing your stamina and energy.</p>
+                    </div>
+                    <div class="importance-item" tabindex="19">
+                        <h3>Reduce Risk of Chronic Diseases</h3>
+                        <p>Healthy eating lowers the risk of heart disease, diabetes, and other illnesses.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="nutrition-table" tabindex="20">
+                <h2>Nutritional Content Levels</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nutrient</th>
+                            <th>Low</th>
+                            <th>Medium</th>
+                            <th>High</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fats</td>
+                            <td>up to 3 g</td>
+                            <td>3 - 17.5 g</td>
+                            <td>above 17.5 g</td>
+                        </tr>
+                        <tr>
+                            <td>Saturated Fats</td>
+                            <td>up to 1.5 g</td>
+                            <td>1.5 - 5 g</td>
+                            <td>above 5 g</td>
+                        </tr>
+                        <tr>
+                            <td>Carbohydrates</td>
+                            <td>up to 5 g</td>
+                            <td>5 - 20 g</td>
+                            <td>above 20 g</td>
+                        </tr>
+                        <tr>
+                            <td>Sugars</td>
+                            <td>up to 5 g</td>
+                            <td>5 - 22.5 g</td>
+                            <td>above 22.5 g</td>
+                        </tr>
+                        <tr>
+                            <td>Proteins</td>
+                            <td>up to 5 g</td>
+                            <td>5 - 20 g</td>
+                            <td>above 20 g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleDarkModeButton = document.getElementById("toggleDarkMode");
+            const toggleSpeechButton = document.getElementById("toggleSpeech");
+            const body = document.body;
+            const navbar = document.querySelector(".navbar");
+
+            // Initialize theme based on local storage or default to light mode
+            if (localStorage.getItem("theme") === "dark") {
+                body.classList.add("dark-mode");
+                navbar.classList.add("dark-mode");
+            } else {
+                body.classList.add("light-mode");
+                navbar.classList.add("light-mode");
+            }
+
+            // Toggle dark/light mode
+            toggleDarkModeButton.addEventListener("click", () => {
+                body.classList.toggle("dark-mode");
+                body.classList.toggle("light-mode");
+                navbar.classList.toggle("dark-mode");
+                navbar.classList.toggle("light-mode");
+
+                // Save user preference in local storage
+                const currentTheme = body.classList.contains("dark-mode") ? "dark" : "light";
+                localStorage.setItem("theme", currentTheme);
+            });
+
+            // Text-to-Speech functionality
+            toggleSpeechButton.addEventListener("click", () => {
+                const textContent = document.querySelector("main").innerText;
+                const speech = new SpeechSynthesisUtterance(textContent);
+                speech.lang = "en-US";
+                speech.rate = 1;
+                window.speechSynthesis.speak(speech);
+            });
+        });
+    </script>
+</body>
+</html>

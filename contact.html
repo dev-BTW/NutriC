@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | NutriC</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <h2>NutriC</h2>
+            <ul>
+                <li><a href="dashboard.html" accesskey="b" tabindex="1">Dashboard</a></li>
+                <li><a href="about.html" accesskey="a" tabindex="2">About</a> </li>
+                <li><a href="contact.html" accesskey="c" tabindex="3">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <main class="contact-content">
+            <h1>Contact Us</h1>
+            
+            <!-- Toggle and Text-to-Speech Buttons -->
+            <div class="toggle-buttons">
+                <button onclick="speakText()">Read Form Out Loud</button>
+            </div>
+
+            <section class="contact-form-section">
+                <form class="contact-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">F<u>u</u>ll Name</label>
+                        <input type="text" id="name" name="name" accesskey="u" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ema<u>i</u>l Address</label>
+                        <input type="email" id="email" name="email" accesskey="i" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject"><u>S</u>ubject</label>
+                        <input type="text" id="subject" name="subject" accesskey="s" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message"><u>M</u>essage</label>
+                        <textarea id="message" name="message" rows="5" accesskey="m" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>NutriC</h2>
+                <p>NutriC is your go-to platform for reliable, evidence-based nutritional information and wellness tips to help you live a healthier life.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><u><a href="dashboard.html" accesskey="b" tabindex="4">Dashboard</a></u></li>
+                    <li><u><a href="about.html" accesskey="a" tabindex="5">About</a></u></li>
+                    <li><u><a href="contact.html" accesskey="c" tabindex="6">Contact</a></u></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Info</h3>
+                <p>Email: support@nutric.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 NutriC | Designed by Your Team
+        </div>
+    </footer>
+
+    <script>
+        // Text-to-Speech Functionality
+        function speakText() {
+            const name = document.getElementById('name').value || "Name field is empty";
+            const email = document.getElementById('email').value || "Email field is empty";
+            const subject = document.getElementById('subject').value || "Subject field is empty";
+            const message = document.getElementById('message').value || "Message field is empty";
+            const text = `Full Name: ${name}. Email Address: ${email}. Subject: ${subject}. Message: ${message}.`;
+
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = "en-US";
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+</html>
